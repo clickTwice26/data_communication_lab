@@ -3,16 +3,26 @@
 import prisma from '@/lib/db';
 import { revalidatePath } from 'next/cache';
 import type { User, Post } from '@prisma/client';
+import { hashPassword } from '@/lib/auth';
 
 /**
  * Server Actions for User operations
  */
 
 type UserWithPosts = User & { posts: Post[] };
+type SafeUser = Omit<User, 'password'>;
+type SafeUserWithPosts = Omit<UserWithPosts, 'password'>;
 
-export async function getUsers(): Promise<User[]> {
+export async function getUsers(): Promise<SafeUser[]> {
   try {
     const users = await prisma.user.findMany({
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        createdAt: true,
+        updatedAt: true,
+      },
       orderBy: { createdAt: 'desc' },
     });
     return users;
@@ -22,11 +32,18 @@ export async function getUsers(): Promise<User[]> {
   }
 }
 
-export async function getUserById(id: string): Promise<UserWithPosts | null> {
+export async function getUserById(id: string): Promise<SafeUserWithPosts | null> {
   try {
     const user = await prisma.user.findUnique({
       where: { id },
-      include: { posts: true },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        createdAt: true,
+        updatedAt: true,
+        posts: true,
+      },
     });
     return user;
   } catch (error) {
@@ -35,10 +52,23 @@ export async function getUserById(id: string): Promise<UserWithPosts | null> {
   }
 }
 
-export async function createUser(data: { email: string; name?: string }) {
+export async function createUser(data: { email: string; name?: string; password: string }) {
   try {
+    const passwordHash = await hashPassword(data.password);
+
     const user = await prisma.user.create({
-      data,
+      data: {
+        email: data.email,
+        name: data.name,
+        password: passwordHash,
+      },
+      select: {
+        id: true,
+        email: true,
+        name: true,
+        createdAt: true,
+        updatedAt: true,
+      },
     });
     revalidatePath('/users');
     return { success: true, data: user };

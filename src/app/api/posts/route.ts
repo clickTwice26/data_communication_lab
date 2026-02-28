@@ -6,7 +6,15 @@ export async function GET() {
   try {
     const posts = await prisma.post.findMany({
       include: {
-        author: true,
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
       },
       orderBy: {
         createdAt: 'desc',
@@ -42,7 +50,15 @@ export async function POST(request: Request) {
         authorId,
       },
       include: {
-        author: true,
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
       },
     });
 

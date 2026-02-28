@@ -11,7 +11,15 @@ export async function GET(
     const post = await prisma.post.findUnique({
       where: { id },
       include: {
-        author: true,
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
       },
     });
 
@@ -50,7 +58,15 @@ export async function PUT(
         ...(published !== undefined && { published }),
       },
       include: {
-        author: true,
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
       },
     });
 

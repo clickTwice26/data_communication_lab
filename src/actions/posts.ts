@@ -9,11 +9,23 @@ import type { Post, User } from '@prisma/client';
  */
 
 type PostWithAuthor = Post & { author: User };
+type SafeAuthor = Omit<User, 'password'>;
+type SafePostWithAuthor = Omit<PostWithAuthor, 'author'> & { author: SafeAuthor };
 
-export async function getPosts(): Promise<PostWithAuthor[]> {
+export async function getPosts(): Promise<SafePostWithAuthor[]> {
   try {
     const posts = await prisma.post.findMany({
-      include: { author: true },
+      include: {
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
+      },
       orderBy: { createdAt: 'desc' },
     });
     return posts;
@@ -23,11 +35,21 @@ export async function getPosts(): Promise<PostWithAuthor[]> {
   }
 }
 
-export async function getPostById(id: string): Promise<PostWithAuthor | null> {
+export async function getPostById(id: string): Promise<SafePostWithAuthor | null> {
   try {
     const post = await prisma.post.findUnique({
       where: { id },
-      include: { author: true },
+      include: {
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
+      },
     });
     return post;
   } catch (error) {
@@ -44,7 +66,17 @@ export async function createPost(data: {
   try {
     const post = await prisma.post.create({
       data,
-      include: { author: true },
+      include: {
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
+      },
     });
     revalidatePath('/posts');
     return { success: true, data: post };
@@ -66,7 +98,17 @@ export async function updatePost(
     const post = await prisma.post.update({
       where: { id },
       data,
-      include: { author: true },
+      include: {
+        author: {
+          select: {
+            id: true,
+            email: true,
+            name: true,
+            createdAt: true,
+            updatedAt: true,
+          },
+        },
+      },
     });
     revalidatePath('/posts');
     revalidatePath(`/posts/${id}`);
