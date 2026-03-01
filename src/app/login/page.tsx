@@ -20,23 +20,25 @@ export default function LoginPage() {
   };
 
   return (
-    <Container maxW="container.sm" h="100vh" display="flex" alignItems="center" justifyContent="center" py="8">
-      <VStack gap="8" w="full" align="center">
-        <Box w="full">
-          <AuthForm
-            title="Log In"
-            subtitle="Welcome back! Sign in to your account."
-            fields={[
-              { name: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com' },
-              { name: 'password', label: 'Password', type: 'password', placeholder: 'Enter your password' },
-            ]}
-            buttonLabel="Log In"
-            onSubmit={handleSubmit}
-            footerText="Don't have an account?"
-            footerLink={{ text: 'Sign up', href: '/signup' }}
-          />
-        </Box>
-      </VStack>
-    </Container>
+    <Box minH="100vh" display="flex" alignItems="center" justifyContent="center" py="8" px="4">
+      <Container maxW="md" w="full">
+        <VStack gap="8" w="full" align="center">
+          <Box w="full">
+            <AuthForm
+              title="Log In"
+              subtitle="Welcome back! Sign in to your account."
+              fields={[
+                { name: 'email', label: 'Email', type: 'email', placeholder: 'you@example.com' },
+                { name: 'password', label: 'Password', type: 'password', placeholder: 'Enter your password' },
+              ]}
+              buttonLabel="Log In"
+              onSubmit={handleSubmit}
+              footerText="Don't have an account?"
+              footerLink={{ text: 'Sign up', href: '/signup' }}
+            />
+          </Box>
+        </VStack>
+      </Container>
+    </Box>
   );
 }

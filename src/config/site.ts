@@ -1,9 +1,9 @@
 export const siteConfig = {
-  name: "DC Lab",
+  name: "Data Communication",
   description: "A professional Next.js application with modern stack",
   url: "http://localhost:3000",
   links: {
-    github: "https://github.com",
+    github: "https://github.com/clickTwice26/data_communication_lab",
   },
 };
 

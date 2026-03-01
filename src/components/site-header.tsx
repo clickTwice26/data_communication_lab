@@ -1,12 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { Box, Flex, HStack, Button, Container } from '@chakra-ui/react';
+import { Box, Flex, HStack, Button, Container, IconButton } from '@chakra-ui/react';
 import { siteConfig } from '@/config/site';
+import { FaSun, FaMoon } from 'react-icons/fa';
 
 import { useState, useEffect } from 'react';
 import { getCurrentUser, logout } from '@/actions/auth';
 import { useRouter } from 'next/navigation';
+import { useTheme } from 'next-themes';
 
 interface User {
   id: string;
@@ -16,8 +18,14 @@ interface User {
 
 export function SiteHeader() {
   const router = useRouter();
+  const { theme, setTheme } = useTheme();
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -38,6 +46,10 @@ export function SiteHeader() {
     }
   };
 
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <Box
       as="header"
@@ -48,28 +60,25 @@ export function SiteHeader() {
       bg="bg"
       backdropFilter="blur(10px)"
     >
-      <Container maxW="container.xl" py="3" px="4">
-        <Flex justify="space-between" align="center">
+      <Container maxW="full" py="3" px="6">
+        <Flex justify="space-between" align="center" w="full">
           <Flex align="center" gap="6">
             <Link href="/">
               <Box fontSize="lg" fontWeight="bold">
                 {siteConfig.name}
               </Box>
             </Link>
-            <HStack as="nav" gap="6" hideBelow="md" fontSize="sm" fontWeight="500">
-              <Link href="/users">
-                <Box _hover={{ opacity: 0.8 }} transition="opacity 0.2s">
-                  Users
-                </Box>
-              </Link>
-              <Link href="/posts">
-                <Box _hover={{ opacity: 0.8 }} transition="opacity 0.2s">
-                  Posts
-                </Box>
-              </Link>
-            </HStack>
           </Flex>
           <HStack gap="3">
+            <IconButton
+              aria-label="Toggle color mode"
+              onClick={toggleTheme}
+              size="sm"
+              variant="ghost"
+              suppressHydrationWarning
+            >
+              {mounted ? (theme === 'dark' ? <FaSun /> : <FaMoon />) : <FaMoon />}
+            </IconButton>
                         {!isLoading && user ? (
                           <>
                             <Link href="/dashboard">

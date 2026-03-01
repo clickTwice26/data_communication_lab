@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Josefin_Sans } from "next/font/google";
 import { Provider } from "@/components/ui/provider";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import { LayoutWrapper } from "@/components/layout-wrapper";
 import { siteConfig } from "@/config/site";
 
-const inter = Inter({
+const josefinSans = Josefin_Sans({
   subsets: ["latin"],
+  weight: ["100", "200", "300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
   variable: "--font-sans",
 });
 
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
       name: "DC Lab",
     },
   ],
-  creator: "DC Lab",
+  creator: "Shagato Chowdhury",
 };
 
 export default function RootLayout({
@@ -39,14 +40,13 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} font-sans antialiased`}
+        className={`${josefinSans.variable} font-sans antialiased`}
+        suppressHydrationWarning
       >
         <Provider>
-          <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
-            <main className="flex-1">{children}</main>
-            <SiteFooter />
-          </div>
+          <LayoutWrapper>
+            {children}
+          </LayoutWrapper>
         </Provider>
       </body>
     </html>

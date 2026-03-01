@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 import { hoverLift, tapScale } from '@/styles/animations';
 import Link from 'next/link';
 
-const MotionBox = motion(Box);
+const MotionBox = motion.create(Box);
 
 export default function Home() {
   const features = [
@@ -41,7 +41,7 @@ export default function Home() {
     <Container maxW="container.xl" py={{ base: '8', md: '12', lg: '16' }}>
       <VStack gap="12" align="stretch">
         <PageHeader
-          heading="Welcome to DC Lab"
+          heading="Welcome to Data Communication Lab"
           description="A professional Next.js starter template with modern tools and best practices. Features include TypeScript, Chakra UI, Framer Motion, and Prisma with SQLite."
         />
 
