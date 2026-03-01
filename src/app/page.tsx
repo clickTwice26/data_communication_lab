@@ -39,7 +39,7 @@ export default function Home() {
   ];
 
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12', lg: '16' }} px={{ base: '4', md: '6' }}>
+    <Container maxW="full" py={{ base: '6', md: '8', lg: '10' }} px={{ base: '3', md: '4' }}>
       <VStack gap="12" align="stretch">
         <PageHeader
           heading="Welcome to Data Communication Lab"
@@ -58,7 +58,7 @@ export default function Home() {
 
         <AnimatedSection delay={0.3}>
           <VStack align="start" gap="8" w="full">
-            <Heading size="xl">Features</Heading>
+            <Heading as="h2" size="3xl" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Features</Heading>
             <Grid templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1fr 1fr' }} gap="6" w="full">
               {features.map((feature, index) => (
                 <MotionBox
@@ -90,7 +90,7 @@ export default function Home() {
         <AnimatedSection delay={0.8}>
           <Box p="6" rounded="md" borderWidth="1px">
             <VStack align="start" gap="6">
-              <Heading size="lg">Design System</Heading>
+              <Heading as="h2" size="2xl" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Design System</Heading>
               <Text fontSize="base" opacity={0.7}>
                 Built-in typography system ensures consistent font sizes across the application.
               </Text>

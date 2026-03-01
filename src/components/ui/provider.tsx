@@ -34,6 +34,20 @@ const customSystem = createSystem(defaultConfig, {
         '8xl': { value: '98px' },
         '9xl': { value: '130px' },
       },
+      colors: {
+        blue: {
+          50: { value: '#e8f2fb' },
+          100: { value: '#c2ddf5' },
+          200: { value: '#9bc8ef' },
+          300: { value: '#74b3e9' },
+          400: { value: '#4d9ee3' },
+          500: { value: '#2689dd' },
+          600: { value: '#0A509E' },
+          700: { value: '#083f7e' },
+          800: { value: '#062e5e' },
+          900: { value: '#041d3e' },
+        },
+      },
     },
   },
 });

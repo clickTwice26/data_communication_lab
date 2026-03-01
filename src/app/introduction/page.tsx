@@ -1,28 +1,43 @@
 import { Container, Heading, Text, VStack, Box } from '@chakra-ui/react';
 import { PageHeader } from '@/components/page-header';
+import { ZoomableImage } from '@/components/zoomable-image';
 
 export default function IntroductionPage() {
   return (
-    <Container maxW="6xl" py="8" px={{ base: "4", md: "6" }}>
+    <Container maxW="full" py="6" px={{ base: "3", md: "4" }}>
       <VStack gap="8" align="stretch">
-        <PageHeader
-          heading="Introduction to Data Communication"
-          description="Learn the fundamentals of data communication and networking"
-        />
-
+ 
         <Box>
           <VStack gap="6" align="stretch">
             <Box>
-              <Heading size="lg" mb="4">What is Data Communication?</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>What is Data Communication?</Heading>
               <Text fontSize="md" lineHeight="tall" opacity={0.9}>
                 Data communication refers to the exchange of data between two devices through some form of transmission medium. 
                 It is the process of sending and receiving data from one device to another. For communication to occur, 
                 communicating devices must be part of a communication system made up of hardware and software.
+                The term telecommunication means communication at a
+                distance. The word data refers to information presented
+                in whatever form is agreed upon by the parties creating
+                and using the data.
+                Data communications are the exchange of data between
+                two devices via some form of transmission medium such
+                as a wire cable.
+                For data communications to occur, the communicating
+                devices must be part of a communication system made up
+                of a combination of hardware (physical equipment) and
+                software (programs).
               </Text>
             </Box>
 
             <Box>
-              <Heading size="lg" mb="4">Components of Data Communication</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Components of Data Communication</Heading>
+              
+              <ZoomableImage 
+                src="https://www.boardinfinity.com/blog/content/images/2023/05/Data-Communication.png"
+                alt="Components of Data Communication Diagram"
+                maxWidth="800px"
+              />
+
               <VStack gap="4" align="stretch">
                 <Box>
                   <Heading size="md" mb="2">1. Message</Heading>
@@ -64,7 +79,7 @@ export default function IntroductionPage() {
             </Box>
 
             <Box>
-              <Heading size="lg" mb="4">Data Flow in Communication</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Data Flow in Communication</Heading>
               <Text fontSize="md" lineHeight="tall" opacity={0.9}>
                 Communication between two devices can occur in three different modes:
               </Text>
@@ -85,7 +100,7 @@ export default function IntroductionPage() {
             </Box>
 
             <Box>
-              <Heading size="lg" mb="4">Why Study Data Communication?</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Why Study Data Communication?</Heading>
               <Text fontSize="md" lineHeight="tall" opacity={0.9}>
                 Understanding data communication is essential in today's digital world. It forms the foundation for:
               </Text>

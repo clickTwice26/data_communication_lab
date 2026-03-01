@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 import type { NextRequest } from 'next/server';
 import { verifyToken } from '@/lib/auth';
-export const runtime = 'nodejs';
-
 
 // Routes that don't require authentication
 const publicRoutes = [
@@ -20,7 +18,7 @@ const publicRoutes = [
 // Routes that require authentication
 const protectedRoutes = ['/dashboard'];
 
-export function middleware(request: NextRequest) {
+export default function proxy(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
   // Check if the route is explicitly protected
@@ -42,13 +40,6 @@ export function middleware(request: NextRequest) {
 
 export const config = {
   matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * - public folder
-     */
-    '/((?!_next/static|_next/image|favicon.ico|public).*)',
+    '/dashboard/:path*',
   ],
 };

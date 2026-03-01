@@ -28,14 +28,14 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
       <Box
         as="main"
         flex="1"
-        ml={{ base: '0', md: '280px' }}
+        ml={{ base: '0', md: '260px' }}
         pt="60px"
         px="0"
         transition="margin 0.3s"
       >
         {children}
       </Box>
-      <Box ml={{ base: '0', md: '280px' }}>
+      <Box ml={{ base: '0', md: '260px' }}>
         <SiteFooter />
       </Box>
 

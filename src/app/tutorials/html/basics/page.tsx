@@ -6,7 +6,7 @@ import { AnimatedSection } from '@/components/animated-section';
 
 export default function HtmlBasicsPage() {
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12' }} px={{ base: '4', md: '6' }}>
+    <Container maxW="full" py={{ base: '6', md: '8' }} px={{ base: '3', md: '4' }}>
       <VStack gap="8" align="stretch">
         <PageHeader
           heading="HTML Basics"
@@ -16,7 +16,7 @@ export default function HtmlBasicsPage() {
         <AnimatedSection delay={0.2}>
           <VStack align="start" gap="6">
             <Box>
-              <Heading size="lg" mb="4">What is HTML?</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>What is HTML?</Heading>
               <Text fontSize="md" lineHeight="1.7" opacity={0.9}>
                 HTML (HyperText Markup Language) is the standard markup language for creating web pages. 
                 It describes the structure of a web page using a series of elements.
@@ -24,7 +24,7 @@ export default function HtmlBasicsPage() {
             </Box>
 
             <Box>
-              <Heading size="lg" mb="4">Basic HTML Structure</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Basic HTML Structure</Heading>
               <Text fontSize="md" lineHeight="1.7" opacity={0.9} mb="4">
                 Every HTML document has a basic structure:
               </Text>
@@ -54,7 +54,7 @@ export default function HtmlBasicsPage() {
             </Box>
 
             <Box>
-              <Heading size="lg" mb="4">HTML Elements</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>HTML Elements</Heading>
               <Text fontSize="md" lineHeight="1.7" opacity={0.9} mb="4">
                 HTML elements are the building blocks of HTML pages. An HTML element is defined by a start tag, 
                 some content, and an end tag:
@@ -70,7 +70,7 @@ export default function HtmlBasicsPage() {
             </Box>
 
             <Box>
-              <Heading size="lg" mb="4">Common HTML Tags</Heading>
+              <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Common HTML Tags</Heading>
               <VStack align="stretch" gap="2">
                 {[
                   { tag: '<h1> to <h6>', desc: 'Heading tags' },

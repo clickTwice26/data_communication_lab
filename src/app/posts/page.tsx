@@ -6,7 +6,7 @@ export default async function PostsPage() {
   const posts = await getPosts();
 
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12' }} px={{ base: '4', md: '6' }}>
+    <Container maxW="full" py={{ base: '6', md: '8' }} px={{ base: '3', md: '4' }}>
       <VStack gap="8" align="stretch">
         <PageHeader
           heading="Posts"

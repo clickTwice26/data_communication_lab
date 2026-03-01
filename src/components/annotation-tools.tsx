@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef } from 'react';
-import { Box, HStack, IconButton, Flex, Text } from '@chakra-ui/react';
+import { Box, HStack, IconButton, Flex } from '@chakra-ui/react';
 import { FaPen, FaHighlighter, FaEraser, FaUndo, FaRedo, FaTrash, FaTimes, FaPencilAlt } from 'react-icons/fa';
 import { ReactSketchCanvas, ReactSketchCanvasRef } from 'react-sketch-canvas';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -19,9 +19,16 @@ export function AnnotationTools() {
   const penColors = ['#FF0000', '#0000FF', '#000000', '#00FF00', '#FF00FF', '#FFA500'];
   const highlighterColors = ['#FFFF00', '#00FFFF', '#FF00FF', '#90EE90', '#FFA500', '#FFB6C1'];
 
+  const hexToRgba = (hex: string, alpha: number) => {
+    const r = parseInt(hex.slice(1, 3), 16);
+    const g = parseInt(hex.slice(3, 5), 16);
+    const b = parseInt(hex.slice(5, 7), 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  };
+
   const getCurrentColor = () => {
     if (tool === 'eraser') return '#FFFFFF';
-    if (tool === 'highlighter') return highlighterColor;
+    if (tool === 'highlighter') return hexToRgba(highlighterColor, 0.4);
     return penColor;
   };
 
@@ -105,7 +112,6 @@ export function AnnotationTools() {
         position="fixed"
         bottom="20px"
         left="50%"
-        transform="translateX(-50%)"
         zIndex="10000"
         bg="white"
         _dark={{ bg: 'gray.800', borderColor: 'gray.700' }}
@@ -116,15 +122,15 @@ export function AnnotationTools() {
         align="center"
         borderWidth="1px"
         borderColor="gray.200"
-        initial={{ y: 100, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
+        initial={{ y: 100, opacity: 0, x: "-50%" }}
+        animate={{ y: 0, opacity: 1, x: "-50%" }}
         transition={{ duration: 0.3 }}
+        drag
+        dragMomentum={false}
+        dragElastic={0}
+        cursor="grab"
+        whileDrag={{ cursor: "grabbing" }}
       >
-        <Text fontSize="sm" fontWeight="600" px="2">
-          Annotation Tools
-        </Text>
-
-        <Box h="6" w="1px" bg="gray.300" _dark={{ bg: 'gray.600' }} />
 
         {/* Pen Tool */}
         <Box position="relative">

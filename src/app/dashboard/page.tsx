@@ -43,7 +43,7 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <Container maxW="container.xl" py="12" px={{ base: '4', md: '6' }}>
+      <Container maxW="full" py="8" px={{ base: '3', md: '4' }}>
         <VStack gap="4" align="center" justify="center" h="60vh">
           <Text>Loading...</Text>
         </VStack>
@@ -62,11 +62,11 @@ export default function DashboardPage() {
   });
 
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12' }} px={{ base: '4', md: '6' }}>
+    <Container maxW="full" py={{ base: '6', md: '8' }} px={{ base: '3', md: '4' }}>
       <VStack gap="8" align="stretch">
         <HStack justify="space-between" align="start">
           <VStack gap="2" align="start">
-            <Heading size="2xl">Dashboard</Heading>
+            <Heading as="h1" size="4xl" fontWeight="extrabold" letterSpacing="tight">Dashboard</Heading>
             <Text opacity={0.7}>Welcome back, {user.name || user.email}!</Text>
           </VStack>
      

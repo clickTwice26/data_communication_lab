@@ -8,7 +8,7 @@ import { FaSun, FaMoon, FaPlus, FaTrash, FaEdit, FaSave } from 'react-icons/fa';
 
 export default function ButtonGuidelinesPage() {
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12' }} px={{ base: '4', md: '6' }}>
+    <Container maxW="full" py={{ base: '6', md: '8' }} px={{ base: '3', md: '4' }}>
       <VStack gap="12" align="stretch">
         <PageHeader
           heading="Button Design Guidelines"
@@ -18,7 +18,7 @@ export default function ButtonGuidelinesPage() {
         {/* Button Variants */}
         <AnimatedSection delay={0.1}>
           <Box>
-            <Heading size="lg" mb="4">Button Variants</Heading>
+            <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Button Variants</Heading>
             <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap="8">
               <Box p="6" borderWidth="1px" rounded="md">
                 <Heading size="md" mb="4">Solid (Primary)</Heading>
@@ -74,7 +74,7 @@ export default function ButtonGuidelinesPage() {
         {/* Button Sizes */}
         <AnimatedSection delay={0.2}>
           <Box>
-            <Heading size="lg" mb="4">Button Sizes</Heading>
+            <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Button Sizes</Heading>
             <Box p="6" borderWidth="1px" rounded="md">
               <VStack align="start" gap="4">
                 <Box>
@@ -111,7 +111,7 @@ export default function ButtonGuidelinesPage() {
         {/* Color Schemes */}
         <AnimatedSection delay={0.3}>
           <Box>
-            <Heading size="lg" mb="4">Color Schemes</Heading>
+            <Heading as="h2" size="2xl" mb="4" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Color Schemes</Heading>
             <Grid templateColumns={{ base: '1fr', md: '1fr 1fr' }} gap="6">
               <Box p="6" borderWidth="1px" rounded="md">
                 <Heading size="sm" mb="3">Blue (Primary)</Heading>

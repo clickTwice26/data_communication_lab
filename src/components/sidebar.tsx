@@ -198,16 +198,16 @@ export function Sidebar() {
       {/* Sidebar */}
       <MotionBox
         position="fixed"
-        left={isMobileOpen ? '0' : '-280px'}
+        left={isMobileOpen ? '0' : '-260px'}
         top="60px"
         h="calc(100vh - 60px)"
-        w="280px"
+        w="260px"
         bg="white"
         _dark={{ bg: 'gray.900' }}
         borderRightWidth="1px"
         zIndex="40"
         initial={false}
-        animate={{ x: isMobileOpen ? 280 : 0 }}
+        animate={{ x: isMobileOpen ? 260 : 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         hideBelow="md"
         display="flex"
@@ -264,7 +264,7 @@ export function Sidebar() {
         left="0"
         top="60px"
         h="calc(100vh - 60px)"
-        w="280px"
+        w="260px"
         bg="white"
         _dark={{ bg: 'gray.900' }}
         borderRightWidth="1px"
