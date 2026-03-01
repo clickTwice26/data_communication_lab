@@ -23,7 +23,7 @@ const navigationData: NavigationItem[] = [
     icon: <FaHome />,
     children: [
       { title: 'Introduction', href: '/introduction' },
-      { title: 'Data Flow', href: '/docs/installation' },
+      { title: 'Data Flow', href: '/data-flow' },
       { title: 'Network', href: '/docs/quick-start' },
       { title: 'Topology', href: '/docs/quick-start' },
     ],

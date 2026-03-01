@@ -3,6 +3,7 @@ import { Josefin_Sans } from "next/font/google";
 import { Provider } from "@/components/ui/provider";
 import { LayoutWrapper } from "@/components/layout-wrapper";
 import { siteConfig } from "@/config/site";
+import "yet-another-react-lightbox/styles.css";
 
 const josefinSans = Josefin_Sans({
   subsets: ["latin"],

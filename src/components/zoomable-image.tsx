@@ -1,24 +1,44 @@
 'use client';
 
+/**
+ * ZoomableImage Component
+ * 
+ * A reusable image component with zoom and fullscreen features.
+ * Uses yet-another-react-lightbox library for lightbox functionality.
+ * 
+ * Features:
+ * - Click to open image in lightbox
+ * - Zoom in/out with mouse wheel or pinch gestures
+ * - Fullscreen mode
+ * - Responsive sizing
+ * - Clean display for transparent images
+ * 
+ * Usage:
+ * ```tsx
+ * <ZoomableImage 
+ *   src="https://example.com/image.png"
+ *   alt="Image description"
+ *   maxWidth="800px"
+ * />
+ * ```
+ */
+
 import { useState } from 'react';
 import Lightbox from 'yet-another-react-lightbox';
 import Fullscreen from 'yet-another-react-lightbox/plugins/fullscreen';
 import Zoom from 'yet-another-react-lightbox/plugins/zoom';
-import 'yet-another-react-lightbox/styles.css';
 import { Box } from '@chakra-ui/react';
 
 interface ZoomableImageProps {
   src: string;
   alt: string;
   maxWidth?: string;
-  borderRadius?: string;
 }
 
 export function ZoomableImage({ 
   src, 
   alt, 
-  maxWidth = '800px',
-  borderRadius = '8px'
+  maxWidth = '800px'
 }: ZoomableImageProps) {
   const [open, setOpen] = useState(false);
 
@@ -32,17 +52,18 @@ export function ZoomableImage({
           h="auto"
           cursor="pointer"
           onClick={() => setOpen(true)}
-          _hover={{ opacity: 0.9 }}
-          transition="opacity 0.2s"
+          transition="all 0.3s"
+          _hover={{ 
+            opacity: 0.8
+          }}
         >
           <img 
             src={src}
             alt={alt}
             style={{ 
               width: '100%', 
-              height: 'auto', 
-              borderRadius,
-              boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              height: 'auto',
+              display: 'block'
             }}
           />
         </Box>
@@ -69,6 +90,11 @@ export function ZoomableImage({
         render={{
           buttonPrev: () => null,
           buttonNext: () => null,
+        }}
+        styles={{
+          container: { backgroundColor: 'white' },
+          navigationPrev: { display: 'none' },
+          navigationNext: { display: 'none' },
         }}
       />
     </>
