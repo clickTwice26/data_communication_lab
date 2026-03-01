@@ -2,7 +2,8 @@
 
 import { PageHeader } from '@/components/page-header';
 import { AnimatedSection } from '@/components/animated-section';
-import { Box, Button, Stack, Grid, Heading, Text, Container, HStack, VStack } from '@chakra-ui/react';
+import { Box, Stack, Grid, Heading, Text, Container, HStack, VStack } from '@chakra-ui/react';
+import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 import { hoverLift, tapScale } from '@/styles/animations';
 import Link from 'next/link';

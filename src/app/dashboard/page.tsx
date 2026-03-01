@@ -1,6 +1,7 @@
 'use client';
 
-import { Container, VStack, Heading, Text, Button, HStack, Box, Grid, Badge } from '@chakra-ui/react';
+import { Container, VStack, Heading, Text, HStack, Box, Grid, Badge } from '@chakra-ui/react';
+import { Button } from '@/components/ui/button';
 import { Stat, StatLabel, StatNumber } from '@chakra-ui/stat';
 import { useState, useEffect } from 'react';
 import { logout, getCurrentUser } from '@/actions/auth';

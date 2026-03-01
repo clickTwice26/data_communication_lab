@@ -101,6 +101,49 @@ import { fadeInUp, staggerContainer, hoverLift } from '@/styles/animations';
 </motion.div>
 ```
 
+### Button Guidelines
+
+Comprehensive button system with variants, sizes, and color schemes for consistent UI design.
+
+**View Live Documentation**: Navigate to `/guidelines/buttons` to see interactive examples.
+
+**Quick Reference**:
+
+```tsx
+// Variants
+<Button colorScheme="blue">Primary</Button>
+<Button variant="outline">Secondary</Button>
+<Button variant="ghost">Tertiary</Button>
+<Button variant="plain">Link Style</Button>
+
+// Sizes
+<Button size="sm">Small</Button>
+<Button size="md">Medium (default)</Button>
+<Button size="lg">Large</Button>
+
+// Color Schemes
+<Button colorScheme="blue">Primary Action</Button>
+<Button colorScheme="red">Danger Action</Button>
+<Button colorScheme="green">Success Action</Button>
+<Button colorScheme="gray">Neutral Action</Button>
+
+// States
+<Button loading>Loading...</Button>
+<Button disabled>Disabled</Button>
+
+// Icon Buttons
+<IconButton aria-label="Add">
+  <FaPlus />
+</IconButton>
+```
+
+**Full Documentation**: See [BUTTON_GUIDELINES.md](./BUTTON_GUIDELINES.md) for detailed guidelines including:
+- When to use each variant
+- Accessibility considerations
+- Responsive design patterns
+- Common usage patterns
+- Best practices and anti-patterns
+
 ## 🗄️ Database
 
 The project uses Prisma with SQLite for easy local development.

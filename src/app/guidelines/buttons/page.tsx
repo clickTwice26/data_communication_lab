@@ -1,6 +1,7 @@
 'use client';
 
-import { Container, Heading, Text, VStack, Box, Button, HStack, Grid, IconButton, Stack } from '@chakra-ui/react';
+import { Container, Heading, Text, VStack, Box, HStack, Grid, IconButton, Stack } from '@chakra-ui/react';
+import { Button } from '@/components/ui/button';
 import { PageHeader } from '@/components/page-header';
 import { AnimatedSection } from '@/components/animated-section';
 import { FaSun, FaMoon, FaPlus, FaTrash, FaEdit, FaSave } from 'react-icons/fa';

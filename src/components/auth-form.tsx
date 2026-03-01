@@ -1,6 +1,7 @@
 'use client';
 
-import { Box, VStack, Button, Text, HStack, Input } from '@chakra-ui/react';
+import { Box, VStack, Text, HStack, Input } from '@chakra-ui/react';
+import { Button } from '@/components/ui/button';
 import { FormControl, FormLabel, FormErrorMessage } from '@chakra-ui/form-control';
 import { useState } from 'react';
 
@@ -138,9 +139,10 @@ export function AuthForm({
             <Button
               type="submit"
               colorScheme="blue"
-              size="md"
+              size="lg"
               loading={isLoading || loading}
               mt="2"
+              w="full"
             >
               {buttonLabel}
             </Button>

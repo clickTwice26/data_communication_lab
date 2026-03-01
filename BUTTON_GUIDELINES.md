@@ -1,7 +1,17 @@
 # Button Design Guidelines
 
 ## Overview
-This document outlines the button design system used throughout the Data Communication Lab project. All buttons should follow these guidelines to ensure consistency and maintain a professional appearance.
+This document outlines the button design system used throughout the Data Communication Lab project. All buttons feature enhanced interactivity with smooth transitions, hover effects, and click animations to provide clear visual feedback and improve user experience.
+
+## Core Button Principles
+
+### Interactive Design
+All buttons in the system include:
+- **Smooth transitions**: 200ms cubic-bezier easing for natural motion
+- **Hover effects**: Subtle lift (2px translateY) with medium shadow
+- **Click feedback**: Scale down (0.98) with reduced shadow for tactile response
+- **Background colors**: Solid, visible backgrounds for clear clickable areas
+- **Disabled states**: Reduced opacity with locked transform to prevent interaction
 
 ## Button Variants
 
@@ -9,9 +19,18 @@ This document outlines the button design system used throughout the Data Communi
 - **Purpose**: Primary actions, main CTAs (Call-to-Action)
 - **Usage**: Sign Up, Create Account, Submit, Save
 - **Properties**: 
-  - Filled background with high contrast
+  - Solid background color (600 shade by default)
+  - White text for high contrast
+  - Darker background on hover (700 shade)
+  - Even darker on click (800 shade)
   - Most prominent button on the page
   - Should be used sparingly (typically one per page section)
+
+**Visual States**:
+- Default: `bg-600`, shadow-none
+- Hover: `bg-700`, translateY(-2px), shadow-md
+- Active/Click: `bg-800`, scale(0.98), shadow-sm
+- Disabled: opacity 0.6, no transform
 
 ```tsx
 <Button colorScheme="blue">Primary Action</Button>
@@ -21,9 +40,18 @@ This document outlines the button design system used throughout the Data Communi
 - **Purpose**: Secondary actions, alternative options
 - **Usage**: Cancel, Delete, Log Out, Secondary CTAs
 - **Properties**: 
-  - Transparent background with colored border
+  - Transparent background with 2px colored border
+  - Colored text matching border
+  - Light background tint on hover
+  - Stronger background on click
   - Less prominent than solid buttons
   - Good for destructive actions when using red color
+
+**Visual States**:
+- Default: border-width 2px, bg transparent
+- Hover: bg-50 (light mode) / bg-950 (dark mode), translateY(-2px)
+- Active/Click: bg-100 / bg-900, scale(0.98)
+- Disabled: opacity 0.6, no interaction
 
 ```tsx
 <Button variant="outline" colorScheme="blue">Secondary Action</Button>
@@ -35,8 +63,16 @@ This document outlines the button design system used throughout the Data Communi
 - **Usage**: Navigation links, Log In, Dashboard, Settings
 - **Properties**: 
   - Transparent background, no border
-  - Subtle hover state
+  - Colored text
+  - Subtle background on hover
   - Minimal visual weight
+  - Great for navigation and less important actions
+
+**Visual States**:
+- Default: bg transparent
+- Hover: bg-100 / bg-900, translateY(-2px)
+- Active/Click: bg-200 / bg-800, scale(0.98)
+- Disabled: opacity 0.6
 
 ```tsx
 <Button variant="ghost">Tertiary Action</Button>
@@ -48,6 +84,7 @@ This document outlines the button design system used throughout the Data Communi
 - **Properties**: 
   - Minimal styling
   - No background or border
+  - Behaves like a text link
   - Minimal visual presence
 
 ```tsx

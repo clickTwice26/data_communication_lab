@@ -3,8 +3,9 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { siteConfig } from '@/config/site';
 import { Box, VStack, Flex, Text, IconButton, Collapsible } from '@chakra-ui/react';
-import { FaChevronDown, FaChevronRight, FaHome, FaBook, FaCode, FaLaptopCode, FaDatabase, FaReact, FaBars, FaTimes, FaPalette } from 'react-icons/fa';
+import { FaChevronDown, FaChevronRight, FaHome, FaBook, FaCode, FaLaptopCode, FaDatabase, FaReact, FaBars, FaTimes, FaPalette, FaGithub } from 'react-icons/fa';
 import { motion } from 'framer-motion';
 
 const MotionBox = motion.create(Box);
@@ -203,34 +204,58 @@ export function Sidebar() {
         bg="white"
         _dark={{ bg: 'gray.900' }}
         borderRightWidth="1px"
-        overflowY="auto"
         zIndex="50"
-        pt="16"
         initial={false}
         animate={{ x: isMobileOpen ? 280 : 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
         hideBelow="md"
-        css={{
-          '&::-webkit-scrollbar': {
-            width: '8px',
-          },
-          '&::-webkit-scrollbar-track': {
-            background: 'transparent',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: '#cbd5e0',
-            borderRadius: '4px',
-          },
-          '&::-webkit-scrollbar-thumb:hover': {
-            background: '#a0aec0',
-          },
-        }}
+        display="flex"
+        flexDirection="column"
       >
-        <VStack gap="0" align="stretch" pb="8">
-          {navigationData.map((item, index) => (
-            <NavigationSection key={index} item={item} />
-          ))}
-        </VStack>
+        <Box
+          flex="1"
+          overflowY="auto"
+          pt="16"
+          css={{
+            '&::-webkit-scrollbar': {
+              width: '8px',
+            },
+            '&::-webkit-scrollbar-track': {
+              background: 'transparent',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: '#cbd5e0',
+              borderRadius: '4px',
+            },
+            '&::-webkit-scrollbar-thumb:hover': {
+              background: '#a0aec0',
+            },
+          }}
+        >
+          <VStack gap="0" align="stretch" pb="4">
+            {navigationData.map((item, index) => (
+              <NavigationSection key={index} item={item} />
+            ))}
+          </VStack>
+        </Box>
+        
+        {/* GitHub Link - Always at bottom */}
+        <Box borderTopWidth="1px" mt="auto">
+          <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
+            <Flex
+              align="center"
+              gap="3"
+              px="4"
+              py="3"
+              cursor="pointer"
+              _hover={{ bg: 'gray.100', _dark: { bg: 'whiteAlpha.100' } }}
+              transition="all 0.2s"
+            >
+              <FaGithub size={18} />
+              <Text fontSize="sm" fontWeight="500">GitHub Repository</Text>
+            </Flex>
+          </a>
+        </Box>
       </MotionBox>
 
       {/* Desktop Sidebar (Always visible) */}
@@ -243,31 +268,55 @@ export function Sidebar() {
         bg="white"
         _dark={{ bg: 'gray.900' }}
         borderRightWidth="1px"
-        overflowY="auto"
         zIndex="40"
-        pt="16"
         hideBelow="md"
-        css={{
-          '&::-webkit-scrollbar': {
-            width: '8px',
-          },
-          '&::-webkit-scrollbar-track': {
-            background: 'transparent',
-          },
-          '&::-webkit-scrollbar-thumb': {
-            background: '#cbd5e0',
-            borderRadius: '4px',
-          },
-          '&::-webkit-scrollbar-thumb:hover': {
-            background: '#a0aec0',
-          },
-        }}
+        display="flex"
+        flexDirection="column"
       >
-        <VStack gap="0" align="stretch" pb="8">
-          {navigationData.map((item, index) => (
-            <NavigationSection key={index} item={item} />
-          ))}
-        </VStack>
+        <Box
+          flex="1"
+          overflowY="auto"
+          pt="16"
+          css={{
+            '&::-webkit-scrollbar': {
+              width: '8px',
+            },
+            '&::-webkit-scrollbar-track': {
+              background: 'transparent',
+            },
+            '&::-webkit-scrollbar-thumb': {
+              background: '#cbd5e0',
+              borderRadius: '4px',
+            },
+            '&::-webkit-scrollbar-thumb:hover': {
+              background: '#a0aec0',
+            },
+          }}
+        >
+          <VStack gap="0" align="stretch" pb="4">
+            {navigationData.map((item, index) => (
+              <NavigationSection key={index} item={item} />
+            ))}
+          </VStack>
+        </Box>
+        
+        {/* GitHub Link - Always at bottom */}
+        <Box borderTopWidth="1px" mt="auto">
+          <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
+            <Flex
+              align="center"
+              gap="3"
+              px="4"
+              py="3"
+              cursor="pointer"
+              _hover={{ bg: 'gray.100', _dark: { bg: 'whiteAlpha.100' } }}
+              transition="all 0.2s"
+            >
+              <FaGithub size={18} />
+              <Text fontSize="sm" fontWeight="500">GitHub Repository</Text>
+            </Flex>
+          </a>
+        </Box>
       </Box>
     </>
   );

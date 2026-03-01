@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { Box, Flex, HStack, Button, Container, IconButton } from '@chakra-ui/react';
+import { Box, Flex, HStack, Container, IconButton } from '@chakra-ui/react';
+import { Button } from '@/components/ui/button';
 import { siteConfig } from '@/config/site';
 import { FaSun, FaMoon } from 'react-icons/fa';
 
@@ -104,11 +105,6 @@ export function SiteHeader() {
                             </Link>
                           </>
                         ) : null}
-            <a href={siteConfig.links.github} target="_blank" rel="noreferrer">
-              <Button variant="ghost" size="sm">
-                GitHub
-              </Button>
-            </a>
           </HStack>
         </Flex>
       </Container>

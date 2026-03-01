@@ -40,7 +40,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${josefinSans.variable} font-sans antialiased`}
+        className={josefinSans.className}
         suppressHydrationWarning
       >
         <Provider>
