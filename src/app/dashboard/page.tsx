@@ -43,7 +43,7 @@ export default function DashboardPage() {
 
   if (isLoading) {
     return (
-      <Container maxW="container.xl" py="12">
+      <Container maxW="container.xl" py="12" px={{ base: '4', md: '6' }}>
         <VStack gap="4" align="center" justify="center" h="60vh">
           <Text>Loading...</Text>
         </VStack>
@@ -62,16 +62,14 @@ export default function DashboardPage() {
   });
 
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12' }}>
+    <Container maxW="container.xl" py={{ base: '8', md: '12' }} px={{ base: '4', md: '6' }}>
       <VStack gap="8" align="stretch">
         <HStack justify="space-between" align="start">
           <VStack gap="2" align="start">
             <Heading size="2xl">Dashboard</Heading>
             <Text opacity={0.7}>Welcome back, {user.name || user.email}!</Text>
           </VStack>
-          <Button colorScheme="red" variant="outline" onClick={handleLogout}>
-            Log Out
-          </Button>
+     
         </HStack>
 
         <Grid templateColumns={{ base: '1fr', md: '1fr 1fr 1fr' }} gap="6">
@@ -132,9 +130,6 @@ export default function DashboardPage() {
         <HStack gap="4" flexWrap="wrap">
           <Button colorScheme="blue" variant="outline" onClick={() => router.push('/posts')}>
             View Posts
-          </Button>
-          <Button colorScheme="blue" variant="outline" onClick={() => router.push('/users')}>
-            View Users
           </Button>
           <Button colorScheme="blue" variant="outline" onClick={() => router.push('/')}>
             Back to Home

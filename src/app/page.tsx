@@ -39,7 +39,7 @@ export default function Home() {
   ];
 
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12', lg: '16' }}>
+    <Container maxW="container.xl" py={{ base: '8', md: '12', lg: '16' }} px={{ base: '4', md: '6' }}>
       <VStack gap="12" align="stretch">
         <PageHeader
           heading="Welcome to Data Communication Lab"
@@ -48,13 +48,8 @@ export default function Home() {
 
         <AnimatedSection delay={0.2}>
           <HStack justifyContent="center" gap="4" flexWrap="wrap">
-            <Link href="/users">
-              <Button size="lg" colorScheme="blue">
-                View Users
-              </Button>
-            </Link>
             <Link href="/posts">
-              <Button size="lg" variant="outline">
+              <Button size="lg" colorScheme="blue">
                 View Posts
               </Button>
             </Link>

@@ -29,7 +29,8 @@
     "prisma": "^7.4.2",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-icons": "^5.5.0"
+    "react-icons": "^5.5.0",
+    "react-sketch-canvas": "^6.2.0"
   },
   "devDependencies": {
     "@types/bcryptjs": "^2.4.6",

@@ -8,7 +8,7 @@ import { FaSun, FaMoon, FaPlus, FaTrash, FaEdit, FaSave } from 'react-icons/fa';
 
 export default function ButtonGuidelinesPage() {
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12' }}>
+    <Container maxW="container.xl" py={{ base: '8', md: '12' }} px={{ base: '4', md: '6' }}>
       <VStack gap="12" align="stretch">
         <PageHeader
           heading="Button Design Guidelines"

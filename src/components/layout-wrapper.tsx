@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { SiteHeader } from './site-header';
 import { Sidebar } from './sidebar';
 import { SiteFooter } from './site-footer';
+import { AnnotationTools } from './annotation-tools';
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -28,6 +29,8 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
         as="main"
         flex="1"
         ml={{ base: '0', md: '280px' }}
+        pt="60px"
+        px="0"
         transition="margin 0.3s"
       >
         {children}
@@ -35,6 +38,9 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
       <Box ml={{ base: '0', md: '280px' }}>
         <SiteFooter />
       </Box>
+
+      {/* Annotation Tools */}
+      <AnnotationTools />
     </Box>
   );
 }

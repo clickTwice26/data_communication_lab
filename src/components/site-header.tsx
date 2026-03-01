@@ -55,11 +55,15 @@ export function SiteHeader() {
     <Box
       as="header"
       borderBottomWidth="1px"
-      position="sticky"
+      position="fixed"
       top="0"
+      left="0"
+      right="0"
       zIndex="50"
-      bg="bg"
+      bg="white"
+      _dark={{ bg: 'gray.900' }}
       backdropFilter="blur(10px)"
+      suppressHydrationWarning
     >
       <Container maxW="full" py="3" px="6">
         <Flex justify="space-between" align="center" w="full">

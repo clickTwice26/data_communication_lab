@@ -19,12 +19,13 @@ interface NavigationItem {
 
 const navigationData: NavigationItem[] = [
   {
-    title: 'Getting Started',
+    title: 'Overview',
     icon: <FaHome />,
     children: [
-      { title: 'Introduction', href: '/' },
-      { title: 'Installation', href: '/docs/installation' },
-      { title: 'Quick Start', href: '/docs/quick-start' },
+      { title: 'Introduction', href: '/introduction' },
+      { title: 'Data Flow', href: '/docs/installation' },
+      { title: 'Network', href: '/docs/quick-start' },
+      { title: 'Topology', href: '/docs/quick-start' },
     ],
   },
   {
@@ -198,13 +199,13 @@ export function Sidebar() {
       <MotionBox
         position="fixed"
         left={isMobileOpen ? '0' : '-280px'}
-        top="0"
-        h="100vh"
+        top="60px"
+        h="calc(100vh - 60px)"
         w="280px"
         bg="white"
         _dark={{ bg: 'gray.900' }}
         borderRightWidth="1px"
-        zIndex="50"
+        zIndex="40"
         initial={false}
         animate={{ x: isMobileOpen ? 280 : 0 }}
         transition={{ duration: 0.3, ease: 'easeInOut' }}
@@ -215,7 +216,6 @@ export function Sidebar() {
         <Box
           flex="1"
           overflowY="auto"
-          pt="16"
           css={{
             '&::-webkit-scrollbar': {
               width: '8px',
@@ -262,8 +262,8 @@ export function Sidebar() {
       <Box
         position="fixed"
         left="0"
-        top="0"
-        h="100vh"
+        top="60px"
+        h="calc(100vh - 60px)"
         w="280px"
         bg="white"
         _dark={{ bg: 'gray.900' }}
@@ -276,7 +276,6 @@ export function Sidebar() {
         <Box
           flex="1"
           overflowY="auto"
-          pt="16"
           css={{
             '&::-webkit-scrollbar': {
               width: '8px',

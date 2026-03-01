@@ -6,7 +6,7 @@ import { AnimatedSection } from '@/components/animated-section';
 
 export default function HtmlBasicsPage() {
   return (
-    <Container maxW="container.xl" py={{ base: '8', md: '12' }}>
+    <Container maxW="container.xl" py={{ base: '8', md: '12' }} px={{ base: '4', md: '6' }}>
       <VStack gap="8" align="stretch">
         <PageHeader
           heading="HTML Basics"

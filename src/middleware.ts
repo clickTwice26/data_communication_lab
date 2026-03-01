@@ -5,26 +5,36 @@ export const runtime = 'nodejs';
 
 
 // Routes that don't require authentication
-const publicRoutes = ['/', '/login', '/signup', '/api/posts', '/api/users', '/posts', '/users'];
+const publicRoutes = [
+  '/', 
+  '/login', 
+  '/signup', 
+  '/api/posts', 
+  '/posts',
+  '/introduction',
+  '/docs',
+  '/tutorials',
+  '/guidelines'
+];
+
+// Routes that require authentication
+const protectedRoutes = ['/dashboard'];
 
 export function middleware(request: NextRequest) {
   const pathname = request.nextUrl.pathname;
 
-  // Check if the route is public
-  const isPublicRoute = publicRoutes.some(
+  // Check if the route is explicitly protected
+  const isProtectedRoute = protectedRoutes.some(
     (route) => pathname === route || pathname.startsWith(route + '/')
   );
 
-  if (isPublicRoute) {
-    return NextResponse.next();
-  }
-
-  // Get the auth token from cookies
-  const token = request.cookies.get('auth_token')?.value;
-
-  // If token doesn't exist or is invalid, redirect to login
-  if (!token || !verifyToken(token)) {
-    return NextResponse.redirect(new URL('/login', request.url));
+  // If it's a protected route, check authentication
+  if (isProtectedRoute) {
+    const token = request.cookies.get('auth_token')?.value;
+    
+    if (!token || !verifyToken(token)) {
+      return NextResponse.redirect(new URL('/login', request.url));
+    }
   }
 
   return NextResponse.next();
