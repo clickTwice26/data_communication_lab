@@ -4,7 +4,6 @@ import { Box } from '@chakra-ui/react';
 import { usePathname } from 'next/navigation';
 import { SiteHeader } from './site-header';
 import { Sidebar } from './sidebar';
-import { SiteFooter } from './site-footer';
 import { AnnotationTools } from './annotation-tools';
 
 export function LayoutWrapper({ children }: { children: React.ReactNode }) {
@@ -35,10 +34,6 @@ export function LayoutWrapper({ children }: { children: React.ReactNode }) {
       >
         {children}
       </Box>
-      <Box ml={{ base: '0', md: '260px' }}>
-        <SiteFooter />
-      </Box>
-
       {/* Annotation Tools */}
       <AnnotationTools />
     </Box>

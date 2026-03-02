@@ -24,8 +24,8 @@ const navigationData: NavigationItem[] = [
     children: [
       { title: 'Introduction', href: '/introduction' },
       { title: 'Data Flow', href: '/data-flow' },
-      { title: 'Network', href: '/docs/quick-start' },
-      { title: 'Topology', href: '/docs/quick-start' },
+      { title: 'Network', href: '/network' },
+      { title: 'Topology', href: '/topology' },
     ],
   },
   {
