@@ -2,6 +2,8 @@ import { getPosts } from '@/actions/posts';
 import { PageHeader } from '@/components/page-header';
 import { Container, VStack, Heading, Text, Box, Badge, Stack } from '@chakra-ui/react';
 
+export const dynamic = 'force-dynamic';
+
 export default async function PostsPage() {
   const posts = await getPosts();
 
