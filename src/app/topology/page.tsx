@@ -679,12 +679,11 @@ export default function TopologyPage() {
               <Box 
                 overflowX="auto" 
                 bg="white"
-                _dark={{ bg: "gray.800" }}
+                _dark={{ bg: "gray.800", borderColor: "gray.700" }}
                 p="6" 
                 borderRadius="lg"
                 borderWidth="1px"
                 borderColor="gray.200"
-                _dark={{ borderColor: "gray.700" }}
               >
                 <table style={{ width: '100%', borderCollapse: 'collapse' }}>
                   <thead>
@@ -756,7 +755,7 @@ export default function TopologyPage() {
               <Heading as="h3" size="lg" mb="4" color="blue.700" _dark={{ color: "blue.300" }}>
                 Key Concepts to Remember
               </Heading>
-              <VStack align="start" spacing="3">
+              <VStack align="start" gap="3">
                 <Text fontSize="md"><Text as="span" fontWeight="600">Scalability:</Text> How well the topology can grow with additional devices</Text>
                 <Text fontSize="md"><Text as="span" fontWeight="600">Reliability:</Text> How well the network handles device or link failures</Text>
                 <Text fontSize="md"><Text as="span" fontWeight="600">Cost:</Text> Installation and maintenance expenses</Text>
