@@ -29,13 +29,17 @@ const navigationData: NavigationItem[] = [
     ],
   },
   {
-    title: 'HTML Tutorial',
+    title: 'The OSI Model',
     icon: <FaCode />,
     children: [
-      { title: 'HTML Basics', href: '/tutorials/html/basics' },
-      { title: 'HTML Elements', href: '/tutorials/html/elements' },
-      { title: 'HTML Attributes', href: '/tutorials/html/attributes' },
-      { title: 'HTML Forms', href: '/tutorials/html/forms' },
+      { title: 'Introduction', href: '/tutorials/osi/introduction' },
+      { title: 'Layers of OSI Model', href: '/tutorials/osi/layers' },
+      { title: 'Data Link layer', href: '/tutorials/osi/data-link-layer' },
+      { title: 'Network layer', href: '/tutorials/osi/network-layer' },
+      { title: 'Transport layer', href: '/tutorials/osi/transport-layer' },
+      { title: 'Session layer', href: '/tutorials/osi/session-layer' },
+      { title: 'Presentation layer', href: '/tutorials/osi/presentation-layer' },
+      { title: 'Application layer', href: '/tutorials/osi/application-layer' },
     ],
   },
   {
