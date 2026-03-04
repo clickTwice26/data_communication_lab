@@ -4,11 +4,7 @@ import { PageHeader } from '@/components/page-header';
 import { AnimatedSection } from '@/components/animated-section';
 import { Box, Stack, Grid, Heading, Text, Container, HStack, VStack } from '@chakra-ui/react';
 import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
-import { hoverLift, tapScale } from '@/styles/animations';
 import Link from 'next/link';
-
-const MotionBox = motion.create(Box);
 
 export default function Home() {
   const features = [
@@ -61,19 +57,13 @@ export default function Home() {
             <Heading as="h2" size="3xl" fontWeight="bold" color="blue.600" _dark={{ color: "blue.400" }}>Features</Heading>
             <Grid templateColumns={{ base: '1fr', md: '1fr 1fr', lg: '1fr 1fr 1fr' }} gap="6" w="full">
               {features.map((feature, index) => (
-                <MotionBox
+                <Box
                   key={feature.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  whileHover={hoverLift}
-                  whileTap={tapScale}
                   p="6"
                   h="full"
                   rounded="md"
                   borderWidth="1px"
                   _hover={{ boxShadow: 'lg' }}
-                  css={{ transition: 'all 0.2s' }}
                 >
                   <VStack align="start" gap="3" h="full">
                     <Heading size="md">{feature.title}</Heading>
@@ -81,7 +71,7 @@ export default function Home() {
                       {feature.description}
                     </Text>
                   </VStack>
-                </MotionBox>
+                </Box>
               ))}
             </Grid>
           </VStack>

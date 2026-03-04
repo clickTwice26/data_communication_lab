@@ -797,6 +797,146 @@ export const tutorialTopicContent: Record<string, TopicPageContent> = {
     ],
     imagePrompts: ['Prisma schema to client pipeline', 'Migration lifecycle diagram'],
   },
+  'line-coding/unipolar': {
+    title: 'Unipolar Line Coding',
+    subtitle: 'Single-polarity signaling with NRZ representation',
+    overview:
+      'Unipolar signaling uses one active voltage polarity for binary representation and is one of the earliest digital line coding approaches.',
+    objectives: [
+      'Understand how Unipolar NRZ maps bits to signal levels',
+      'Identify practical drawbacks such as DC component and synchronization challenges',
+      'Recognize where unipolar encoding is useful as a conceptual baseline',
+    ],
+    sections: [
+      {
+        title: 'Included Scheme: NRZ',
+        body: [
+          'In Unipolar NRZ, one binary value (typically 1) is represented by a positive voltage, while the other value (0) is represented by zero voltage.',
+          'Because the signal does not return to a neutral midpoint within each bit interval, this format is simple to generate but less robust for clock recovery over long sequences.'
+        ],
+      },
+      {
+        title: 'Advantages and Limitations',
+        body: [
+          'The primary advantage is implementation simplicity, which makes it useful for introductory study and very short-distance use cases.',
+          'Major limitations include a strong DC component, poor noise immunity compared with balanced schemes, and weak synchronization during long runs of identical bits.'
+        ],
+      },
+    ],
+    imagePrompts: ['Unipolar NRZ waveform for sample bit stream', 'Comparison of Unipolar NRZ and baseline timing recovery'],
+  },
+  'line-coding/polar': {
+    title: 'Polar Line Coding',
+    subtitle: 'Balanced positive and negative signaling schemes',
+    overview:
+      'Polar line coding uses both positive and negative voltage levels, reducing DC bias and improving representation flexibility for digital transmission.',
+    objectives: [
+      'Differentiate NRZ-L and NRZ-I within polar signaling',
+      'Understand RZ pulse behavior and trade-offs',
+      'Compare Manchester and Differential Manchester biphase techniques',
+    ],
+    sections: [
+      {
+        title: 'Included Schemes: NRZ-L, NRZ-I, RZ',
+        body: [
+          'NRZ-L maps bit values directly to level polarity, while NRZ-I uses transitions to represent one of the bit values, improving tolerance to polarity inversion in some contexts.',
+          'RZ (Return-to-Zero) introduces a mid-bit return toward zero level, which improves timing information at the cost of increased bandwidth usage.'
+        ],
+      },
+      {
+        title: 'Biphase Family: Manchester and Differential Manchester',
+        body: [
+          'Manchester guarantees a transition in the middle of every bit period, combining data and clock information in the same waveform.',
+          'Differential Manchester preserves mid-bit transitions for clocking while using presence or absence of edge transitions at bit boundaries to encode data, improving robustness to line polarity changes.'
+        ],
+      },
+    ],
+    imagePrompts: ['Polar NRZ-L, NRZ-I, and RZ waveform comparison', 'Manchester vs Differential Manchester timing diagram'],
+  },
+  'line-coding/bipolar': {
+    title: 'Bipolar Line Coding',
+    subtitle: 'Three-level signaling with alternating mark polarity',
+    overview:
+      'Bipolar techniques use three levels and alternate pulse polarity for active symbols, reducing DC content and enabling simple error awareness in practical links.',
+    objectives: [
+      'Explain Alternate Mark Inversion (AMI) encoding logic',
+      'Describe pseudoternary mapping and how it differs from AMI',
+      'Understand why bipolar signaling improves balance versus unipolar schemes',
+    ],
+    sections: [
+      {
+        title: 'Included Schemes: AMI and Pseudoternary',
+        body: [
+          'In AMI, binary 0 is represented by zero voltage and binary 1 is represented by alternating positive and negative pulses, preventing a persistent DC shift.',
+          'Pseudoternary reverses this idea: binary 1 becomes zero voltage and binary 0 alternates between positive and negative pulses.'
+        ],
+      },
+      {
+        title: 'Operational Characteristics',
+        body: [
+          'Alternating polarity helps maintain signal balance and supports transformer-coupled transmission media in many telecommunication systems.',
+          'Specific bipolar violations can also be detected and used as control signals in enhanced variants, making bipolar coding historically important in digital trunks.'
+        ],
+      },
+    ],
+    imagePrompts: ['AMI waveform with alternating marks', 'AMI and pseudoternary side-by-side encoding example'],
+  },
+  'line-coding/multilevel': {
+    title: 'Multilevel Line Coding',
+    subtitle: 'Higher bit density using multiple amplitude states',
+    overview:
+      'Multilevel line coding increases data efficiency by encoding multiple bits per symbol through a larger set of signal levels or coordinated channel dimensions.',
+    objectives: [
+      'Understand why multilevel schemes improve spectral efficiency',
+      'Identify how 2B1Q, 8B6T, and 4D-PAM5 map data into symbols',
+      'Recognize design trade-offs involving noise tolerance and receiver complexity',
+    ],
+    sections: [
+      {
+        title: 'Included Schemes: 2B1Q and 8B6T',
+        body: [
+          '2B1Q maps 2 bits into one quaternary symbol, reducing baud rate for the same bit rate and improving transmission efficiency on suitable channels.',
+          '8B6T encodes 8 bits into 6 ternary symbols, balancing bandwidth and coding constraints with careful symbol selection.'
+        ],
+      },
+      {
+        title: 'Included Scheme: 4D-PAM5',
+        body: [
+          '4D-PAM5 uses five amplitude levels across four coordinated dimensions (typically twisted pairs) to achieve high throughput while controlling crosstalk and error behavior.',
+          'This scheme illustrates how modern physical layers combine coding, signaling geometry, and error control to reach higher Ethernet-class data rates.'
+        ],
+      },
+    ],
+    imagePrompts: ['2B1Q and 8B6T symbol mapping table', '4D-PAM5 conceptual constellation across paired channels'],
+  },
+  'line-coding/multitransition': {
+    title: 'Multitransition Line Coding',
+    subtitle: 'Transition-constrained signaling with MLT-3',
+    overview:
+      'Multitransition coding focuses on controlled level transitions to reduce high-frequency content while preserving reliable data transmission on practical copper media.',
+    objectives: [
+      'Understand the MLT-3 state sequence and transition rule',
+      'See why MLT-3 reduces required signaling bandwidth',
+      'Connect MLT-3 usage with high-speed LAN physical layers',
+    ],
+    sections: [
+      {
+        title: 'Included Scheme: MLT-3',
+        body: [
+          'MLT-3 cycles through three levels (positive, zero, negative) only when a specific bit condition triggers a transition; otherwise, it holds the current level.',
+          'By spreading transitions over multiple states, MLT-3 lowers the highest fundamental frequency compared with simple binary toggling for equivalent bit streams.'
+        ],
+      },
+      {
+        title: 'Engineering Perspective',
+        body: [
+          'Lower spectral content helps reduce electromagnetic emissions and supports operation over channel conditions where high-frequency attenuation is a concern.',
+          'MLT-3 is commonly discussed alongside scramblers and block coding in physical layer designs where transition statistics matter for timing and signal integrity.'
+        ],
+      },
+    ],
+    imagePrompts: ['MLT-3 waveform state progression', 'Frequency-content comparison between NRZ and MLT-3'],
+  },
 };
 
 export const guidelineTopicContent: Record<string, TopicPageContent> = {

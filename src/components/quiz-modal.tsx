@@ -41,9 +41,6 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { FaTrophy, FaCheckCircle, FaTimesCircle, FaRedo } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-
-const MotionBox = motion.create(Box);
 
 export interface QuizQuestion {
   id: number;
@@ -237,16 +234,12 @@ export function QuizModal({ sectionId, sectionTitle, questions }: QuizModalProps
                       h="full"
                       w={`${progress}%`}
                       bg="blue.500"
-                      transition="width 0.3s"
                     />
                   </Box>
                 </Box>
 
-                <MotionBox
+                <Box
                   key={currentQuestion}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}
                 >
                   <Heading size="md" mb="6">
                     {questions[currentQuestion].question}
@@ -281,10 +274,8 @@ export function QuizModal({ sectionId, sectionTitle, questions }: QuizModalProps
                         }}
                         cursor="pointer"
                         onClick={() => handleAnswerSelect(index)}
-                        transition="all 0.2s"
                         _hover={{
                           borderColor: 'blue.400',
-                          transform: 'translateY(-2px)',
                           boxShadow: 'md',
                         }}
                       >
@@ -317,20 +308,17 @@ export function QuizModal({ sectionId, sectionTitle, questions }: QuizModalProps
                       </Box>
                     ))}
                   </VStack>
-                </MotionBox>
+                </Box>
               </VStack>
             ) : (
               <VStack gap="8" align="stretch" py="2">
                 <Box textAlign="center" py="6" borderBottomWidth="1px">
-                  <MotionBox
-                    initial={{ scale: 0 }}
-                    animate={{ scale: 1 }}
-                    transition={{ duration: 0.5, type: 'spring' }}
+                  <Box
                     display="flex"
                     justifyContent="center"
                   >
                     <FaTrophy size={64} color={getScoreColor() === 'green' ? '#38A169' : getScoreColor() === 'blue' ? '#0A509E' : getScoreColor() === 'yellow' ? '#D69E2E' : '#E53E3E'} />
-                  </MotionBox>
+                  </Box>
                   <Heading size="2xl" mt="6" mb="3" fontWeight="bold">
                     Quiz Complete!
                   </Heading>
@@ -359,7 +347,6 @@ export function QuizModal({ sectionId, sectionTitle, questions }: QuizModalProps
                             borderColor: isCorrect ? 'green.600' : 'red.600',
                             bg: isCorrect ? 'green.950' : 'red.950',
                           }}
-                          transition="all 0.2s"
                         >
                           <HStack mb="3" align="center">
                             {isCorrect ? (

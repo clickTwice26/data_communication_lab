@@ -1,7 +1,7 @@
 /* Global styles for Chakra UI */
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
   font-size: 18px;
 }
 
@@ -16,28 +16,17 @@ body {
   font-family: 'Josefin Sans', var(--font-sans), system-ui, -apple-system, sans-serif !important;
 }
 
-/* Smooth transitions for theme changes */
-*:not(input):not(textarea) {
-  transition: background-color 0.2s ease, color 0.2s ease;
-}
-
-/* Enhanced Button Interactions */
 button {
   cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   user-select: none;
-}
-
-button:hover {
-  transform: translateY(-1px);
-}
-
-button:active {
-  transform: translateY(0) scale(0.98);
 }
 
 button:disabled {
   cursor: not-allowed;
   opacity: 0.6;
-  transform: none !important;
+}
+
+* {
+  animation: none !important;
+  transition: none !important;
 }

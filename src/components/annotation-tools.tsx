@@ -4,10 +4,6 @@ import { useState, useRef } from 'react';
 import { Box, HStack, IconButton, Flex } from '@chakra-ui/react';
 import { FaPen, FaHighlighter, FaEraser, FaUndo, FaRedo, FaTrash, FaTimes, FaPencilAlt } from 'react-icons/fa';
 import { ReactSketchCanvas, ReactSketchCanvasRef } from 'react-sketch-canvas';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const MotionBox = motion.create(Box);
-const MotionFlex = motion.create(Flex);
 
 export function AnnotationTools() {
   const [isOpen, setIsOpen] = useState(false);
@@ -56,14 +52,11 @@ export function AnnotationTools() {
 
   if (!isOpen) {
     return (
-      <MotionBox
+      <Box
         position="fixed"
         bottom="20px"
         right="20px"
         zIndex="9998"
-        initial={{ opacity: 0, scale: 0 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.3 }}
       >
         <IconButton
           aria-label="Open Annotation Tools"
@@ -77,7 +70,7 @@ export function AnnotationTools() {
         >
           <FaPencilAlt />
         </IconButton>
-      </MotionBox>
+      </Box>
     );
   }
 
@@ -108,7 +101,7 @@ export function AnnotationTools() {
       </Box>
 
       {/* Toolbar */}
-      <MotionFlex
+      <Flex
         position="fixed"
         bottom="20px"
         left="50%"
@@ -122,14 +115,7 @@ export function AnnotationTools() {
         align="center"
         borderWidth="1px"
         borderColor="gray.200"
-        initial={{ y: 100, opacity: 0, x: "-50%" }}
-        animate={{ y: 0, opacity: 1, x: "-50%" }}
-        transition={{ duration: 0.3 }}
-        drag
-        dragMomentum={false}
-        dragElastic={0}
-        cursor="grab"
-        whileDrag={{ cursor: "grabbing" }}
+        transform="translateX(-50%)"
       >
 
         {/* Pen Tool */}
@@ -170,7 +156,6 @@ export function AnnotationTools() {
                   borderColor={penColor === color ? 'blue.500' : 'transparent'}
                   onClick={() => setPenColor(color)}
                   _hover={{ transform: 'scale(1.1)' }}
-                  transition="all 0.2s"
                 />
               ))}
             </HStack>
@@ -215,7 +200,6 @@ export function AnnotationTools() {
                   borderColor={highlighterColor === color ? 'blue.500' : 'transparent'}
                   onClick={() => setHighlighterColor(color)}
                   _hover={{ transform: 'scale(1.1)' }}
-                  transition="all 0.2s"
                 />
               ))}
             </HStack>
@@ -285,7 +269,7 @@ export function AnnotationTools() {
         >
           <FaTimes />
         </IconButton>
-      </MotionFlex>
+      </Flex>
     </>
   );
 }

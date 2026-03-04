@@ -6,9 +6,6 @@ import { usePathname } from 'next/navigation';
 import { siteConfig } from '@/config/site';
 import { Box, VStack, Flex, Text, IconButton, Collapsible } from '@chakra-ui/react';
 import { FaChevronDown, FaChevronRight, FaHome, FaBook, FaCode, FaLaptopCode, FaDatabase, FaReact, FaBars, FaTimes, FaPalette, FaGithub } from 'react-icons/fa';
-import { motion } from 'framer-motion';
-
-const MotionBox = motion.create(Box);
 
 interface NavigationItem {
   title: string;
@@ -43,14 +40,14 @@ const navigationData: NavigationItem[] = [
     ],
   },
   {
-    title: 'CSS Tutorial',
+    title: 'Line Coding',
     icon: <FaBook />,
     children: [
-      { title: 'CSS Basics', href: '/tutorials/css/basics' },
-      { title: 'CSS Selectors', href: '/tutorials/css/selectors' },
-      { title: 'CSS Layout', href: '/tutorials/css/layout' },
-      { title: 'CSS Flexbox', href: '/tutorials/css/flexbox' },
-      { title: 'CSS Grid', href: '/tutorials/css/grid' },
+      { title: 'Unipolar', href: '/tutorials/line-coding/unipolar' },
+      { title: 'Polar', href: '/tutorials/line-coding/polar' },
+      { title: 'Bipolar', href: '/tutorials/line-coding/bipolar' },
+      { title: 'Multilevel', href: '/tutorials/line-coding/multilevel' },
+      { title: 'Multitransition', href: '/tutorials/line-coding/multitransition' },
     ],
   },
   {
@@ -117,7 +114,6 @@ function NavigationSection({ item, level = 0 }: { item: NavigationItem; level?: 
           bg={isActive ? 'blue.500' : 'transparent'}
           color={isActive ? 'white' : 'inherit'}
           _hover={{ bg: isActive ? 'blue.600' : 'gray.100', _dark: { bg: isActive ? 'blue.600' : 'whiteAlpha.100' } }}
-          transition="all 0.2s"
           borderLeftWidth="3px"
           borderLeftColor={isActive ? 'blue.500' : 'transparent'}
           fontSize="sm"
@@ -140,7 +136,6 @@ function NavigationSection({ item, level = 0 }: { item: NavigationItem; level?: 
         cursor="pointer"
         onClick={() => setIsOpen(!isOpen)}
         _hover={{ bg: 'gray.100', _dark: { bg: 'whiteAlpha.100' } }}
-        transition="all 0.2s"
         fontWeight="600"
         fontSize="sm"
       >
@@ -200,7 +195,7 @@ export function Sidebar() {
       )}
 
       {/* Sidebar */}
-      <MotionBox
+      <Box
         position="fixed"
         left={isMobileOpen ? '0' : '-260px'}
         top="60px"
@@ -210,9 +205,6 @@ export function Sidebar() {
         _dark={{ bg: 'gray.900' }}
         borderRightWidth="1px"
         zIndex="40"
-        initial={false}
-        animate={{ x: isMobileOpen ? 260 : 0 }}
-        transition={{ duration: 0.3, ease: 'easeInOut' }}
         hideBelow="md"
         display="flex"
         flexDirection="column"
@@ -253,14 +245,13 @@ export function Sidebar() {
               py="3"
               cursor="pointer"
               _hover={{ bg: 'gray.100', _dark: { bg: 'whiteAlpha.100' } }}
-              transition="all 0.2s"
             >
               <FaGithub size={18} />
               <Text fontSize="sm" fontWeight="500">GitHub Repository</Text>
             </Flex>
           </a>
         </Box>
-      </MotionBox>
+      </Box>
 
       {/* Desktop Sidebar (Always visible) */}
       <Box
@@ -313,7 +304,6 @@ export function Sidebar() {
               py="3"
               cursor="pointer"
               _hover={{ bg: 'gray.100', _dark: { bg: 'whiteAlpha.100' } }}
-              transition="all 0.2s"
             >
               <FaGithub size={18} />
               <Text fontSize="sm" fontWeight="500">GitHub Repository</Text>
